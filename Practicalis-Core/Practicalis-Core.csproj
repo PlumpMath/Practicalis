@@ -81,8 +81,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>rmdir /s /q $(OutDir)Resources
-robocopy /e $(SolutionDir)Resources $(OutDir)</PreBuildEvent>
+    <PreBuildEvent>echo D|xcopy /y /s $(SolutionDir)Resources $(SolutionDir)bin\$(ConfigurationName)\Resources</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
