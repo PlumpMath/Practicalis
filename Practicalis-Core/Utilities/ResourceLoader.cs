@@ -9,17 +9,13 @@ namespace Practicalis.Utilities
         {
             string shader = "";
 
-            using (StreamReader sr = File.OpenText("./Resources/Shaders/" + fileName))
-            {
-                try
-                {
-                    shader = sr.ReadToEnd();
-                }
-                catch (IOException e)
-                {
-                    Console.WriteLine("ERROR: Could not load shader\n{0}", e.StackTrace);
-                }
-            }
+            FileStream fs = new FileStream("Resources/Shaders/" + fileName + ".prbin", FileMode.Open, FileAccess.Read);
+            BinaryReader br = new BinaryReader(fs);
+
+            shader = br.ReadString();
+
+            br.Close();
+            fs.Close();
 
             return shader;
         }
